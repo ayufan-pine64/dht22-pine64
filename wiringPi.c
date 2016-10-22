@@ -5,22 +5,30 @@
 
 static uint64_t epochMilli, epochMicro;
 
-int wiringPiSetup() {
+int wiringPiSetup()
+{
   initialiseEpoch();
   return setup();
 }
 
-int digitalRead(int gpio) {
+int digitalRead(int gpio)
+{
   return input_gpio(gpio);
 }
 
-void digitalWrite(int gpio, int value) {
+void digitalWrite(int gpio, int value)
+{
   output_gpio(gpio, value);
 }
 
-void pinMode(int gpio, int direction) {
+void pinMode(int gpio, int direction)
+{
   setup_gpio(gpio, direction, PUD_UP);
 }
+
+//
+// The functions belowe are copied from wiringPi
+//
 
 void initialiseEpoch (void)
 {
@@ -72,7 +80,7 @@ void delay (unsigned int howLong)
   nanosleep (&sleeper, &dummy) ;
 }
 
-static unsigned int millis (void)
+unsigned int millis (void)
 {
   struct timeval tv ;
   uint64_t now ;

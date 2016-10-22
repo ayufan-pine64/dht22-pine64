@@ -1,7 +1,7 @@
 // License MIT
 // Compatibility layer done by Kamil Trzcinski <ayufan@ayufan.eu>
 
-#include "gpio/c_gpio.h"
+#include "c_gpio.h"
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdint.h>
