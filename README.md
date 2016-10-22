@@ -31,6 +31,22 @@ dht22 -p <pin-number> -s hum
 dht22 -p <pin-number> -s temp
 ```
 
+### Use with Home-Assistant
+
+Add this to your configuration file:
+
+```
+sensor:
+- platform: command_line
+  name: office_room
+  unit_of_measurement: "°C"
+  command: "dht22 -r 10 -s temp -p 71"
+- platform: command_line
+  name: office_room
+  unit_of_measurement: "humidity"
+  command: "dht22 -r 10 -s hum -p 71"
+```
+
 ### Dependencies
 
 For controlling the GPIO's I used this RPi.GPIO-PineA64:

@@ -9,7 +9,7 @@
 
 #define MAX_TIMINGS	  86
 
-int DHT_PIN = 73;
+int DHT_PIN = 0;
 
 int read_dht_data(float *h, float *t)
 {
@@ -142,9 +142,14 @@ int main(int argc, char *argv[])
 
   done:
 
+  if (DHT_PIN <= 0) {
+    fprintf(stderr, "Missing DHT PIN. Go to: http://joey.hazlett.us/pine64/pine64_pins.html\n");
+    usage(argv[0]);
+  }
+
   if (wiringPiSetup()) {
     fprintf(stderr, "Failed to configure GPIO\n");
-    exit(1);
+    usage(argv[0]);
   }
 
   setprio();
